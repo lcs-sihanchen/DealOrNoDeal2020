@@ -11,7 +11,10 @@ import Foundation
 //
 // INPUT SECTION OF PROGRAM
 //
+
+// MARK: Approach #1
 var briefcasesOpened = -1
+
 
 // Loop until valid input provided by user
 while true {
@@ -29,7 +32,7 @@ while true {
         
         // Could not make input into an integer, so return to top and ask again
         continue
-
+        
     }
     
     // Check that integer is in desired range
@@ -70,13 +73,32 @@ var briefcaseValues = [100, 500, 1_000, 5_000, 10_000, 25_000, 50_000, 100_000, 
 // OUTPUT / RETURN VALUE:
 //
 // An integer between 1 and 10, inclusive
+var whichBriefcaseOpened = 0
+
 func getBriefcaseOpened(onTurn turn: Int) -> Int {
     
     // STUDENTS: Complete this function
-    
+    while true{
+        print("Briefcase opened, in turn \(turn), was:")
+        guard let givenInput = readLine() else {
+            continue
+        }
+        
+        guard let intGivenInput = Int(givenInput) else {
+            continue
+        }
+        
+        guard intGivenInput > 0, intGivenInput < 11 else {
+            continue
+        }
+        briefcasesOpened = intGivenInput
+        break
+        
+        
+    }
     
     // The statement below can be modified
-    return 0
+    return briefcasesOpened
     
 }
 
@@ -92,9 +114,20 @@ for turn in 1...briefcasesOpened {
 }
 
 // STUDENTS: Do any remaining calculations you might need below.
+var totalAmountOfBriefCase = 0
+for n in 0...9 {
+    totalAmountOfBriefCase += briefcaseValues[n]
+}
 
+let bankersOffer = Int.random(in: totalAmountOfBriefCase*4/5...totalAmountOfBriefCase*6/5)
 
-
+print("What was the banker's offer?")
+print("\(bankersOffer)")
+if bankersOffer >= totalAmountOfBriefCase/(10-briefcasesOpened) {
+    print("Deal")
+} else {
+    print("No Deal")
+}
 
 //
 // OUTPUT SECTION OF PROGRAM
