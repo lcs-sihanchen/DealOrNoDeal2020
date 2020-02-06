@@ -91,14 +91,14 @@ func getBriefcaseOpened(onTurn turn: Int) -> Int {
         guard intGivenInput > 0, intGivenInput < 11 else {
             continue
         }
-        briefcasesOpened = intGivenInput
+        whichBriefcaseOpened = intGivenInput
         break
         
         
     }
     
     // The statement below can be modified
-    return briefcasesOpened
+    return whichBriefcaseOpened
     
 }
 
@@ -119,7 +119,7 @@ for n in 0...9 {
     totalAmountOfBriefCase += briefcaseValues[n]
 }
 
-let bankersOffer = Int.random(in: totalAmountOfBriefCase*4/5...totalAmountOfBriefCase*6/5)
+let bankersOffer = Int.random(in: totalAmountOfBriefCase/(10-briefcasesOpened)*4/5...totalAmountOfBriefCase/(10-briefcasesOpened)*6/5)
 
 print("What was the banker's offer?")
 print("\(bankersOffer)")
