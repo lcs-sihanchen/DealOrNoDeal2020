@@ -115,19 +115,35 @@ for turn in 1...briefcasesOpened {
 
 // STUDENTS: Do any remaining calculations you might need below.
 var totalAmountOfBriefCase = 0
-for n in 0...9 {
+for n in 0...briefcaseValues.count-1 {
     totalAmountOfBriefCase += briefcaseValues[n]
 }
 
-let bankersOffer = Int.random(in: totalAmountOfBriefCase/(10-briefcasesOpened)*4/5...totalAmountOfBriefCase/(10-briefcasesOpened)*6/5)
 
 print("What was the banker's offer?")
-print("\(bankersOffer)")
-if bankersOffer >= totalAmountOfBriefCase/(10-briefcasesOpened) {
-    print("Deal")
-} else {
-    print("No Deal")
+let theCasesLeft = 10-briefcasesOpened
+while true {
+    let inputLine = readLine()
+    guard let intInputLine = Int(inputLine!) else {
+        continue
+    }
+    if intInputLine > totalAmountOfBriefCase/theCasesLeft{
+        print("Deal")
+    } else {
+        print("No Deal")
+    }
+    
 }
+//// Generate a random number for banker's offer
+//let bankersOffer = Int.random(in: totalAmountOfBriefCase/(10-briefcasesOpened)*4/5...totalAmountOfBriefCase/(10-briefcasesOpened)*6/5)
+//
+//print("What was the banker's offer?")
+//print("\(bankersOffer)")
+//if bankersOffer >= totalAmountOfBriefCase/(10-briefcasesOpened) {
+//    print("Deal")
+//} else {
+//    print("No Deal")
+//}
 
 //
 // OUTPUT SECTION OF PROGRAM
